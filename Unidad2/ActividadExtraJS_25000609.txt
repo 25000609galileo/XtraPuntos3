@@ -1,0 +1,47 @@
+(function() {
+  const iniciarJuego = () => {
+    // El número aleatorio se genera entre 1 y 9
+    const numeroAleatorio = Math.floor(Math.random() * 9) + 1;
+    
+    let adivinanzaUsuario;
+    let esEntradaValida = false;
+    
+    // Seguir pidiendo al usuario que ingrese un número válido hasta que lo haga bien
+    while (!esEntradaValida) {
+      adivinanzaUsuario = parseInt(prompt("Elige un número entre 3 y 6"));
+      
+      // Verificar si la entrada está dentro del rango válido
+      if (adivinanzaUsuario >= 3 && adivinanzaUsuario <= 6) {
+        esEntradaValida = true;
+      } else {
+        alert("Entrada inválida. Por favor ingresa un número entre 3 y 6.");
+      }
+    }
+    
+    let mensajeResultado = "";
+    
+    // Determinar si la adivinanza del usuario es mayor, menor o igual al número de la computadora
+    if (adivinanzaUsuario > numeroAleatorio) {
+      mensajeResultado = Tu adivinanza de ${adivinanzaUsuario} es mayor que el número de la computadora ${numeroAleatorio}. ¡Adivinaste mal!;
+    } else if (adivinanzaUsuario < numeroAleatorio) {
+      mensajeResultado = Tu adivinanza de ${adivinanzaUsuario} es menor que el número de la computadora ${numeroAleatorio}. ¡Adivinaste mal!;
+    } else {
+      mensajeResultado = Tu adivinanza de ${adivinanzaUsuario} es exactamente igual al número de la computadora ${numeroAleatorio}. ¡Adivinaste correctamente!;
+    }
+    
+    // Mostrar el resultado
+    alert(mensajeResultado);
+    
+    // Preguntar si quiere jugar de nuevo
+    let jugarDeNuevo = prompt("¿Te gustaría jugar de nuevo? (sí o no)").toLowerCase();
+    
+    if (jugarDeNuevo === "sí") {
+      iniciarJuego(); // Reiniciar el juego si el usuario elige sí
+    } else {
+      alert("¡Gracias por jugar! Nos vemos la próxima vez.");
+    }
+  };
+
+  // Iniciar el juego
+  iniciarJuego();
+})();
